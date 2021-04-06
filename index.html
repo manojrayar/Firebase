@@ -4,9 +4,92 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
+    <nav style="background: linear-gradient(to right, rgb(31, 64, 55), rgb(153, 242, 200));">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">codeZone</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="modal-trigger" href="#modal1" >Login</a></li>
+            <li><a class="modal-trigger" href="#modal2">Signup</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <!-- Modal Structure for login -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+        <h4>Log-In</h4>
+        <input placeholder="Email" type="email" class="input-control" />
+        <input placeholder="password" type="password" class="input-control" />
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat btn">Submit</a>
+        </div>
+    </div>
+
+    <!-- Modal Structure for Signup -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+        <h4>Sign-Up</h4>
+        <span>To get started...</span>
+          <form autocomplete="off" onsubmit="signup(event)">
+            <input placeholder="Email" id="email" type="email" class="input-control" />
+            <input placeholder="password" id="password" type="password" class="input-control" />
+            <input placeholder="confirm password" id="cpassword" type="password" class="input-control" />
+            <a type="submit" class="modal-close waves-effect waves-green btn-flat btn">Submit</a>
+          </form>
+        </div>
+    </div>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a class="modal-trigger" href="#modal1">Login</a></li>
+        <li><a class="modal-trigger" href="#modal2">Signup</a></li>
+    </ul>
+
+
+
+
     
+<script src="scripts/auth.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+     document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems);
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+</script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+
+<!-- sdk for firebase auth -->
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDV4SUhkGP0GRr9N2ZZmstJ6FUn7NZJkKI",
+    authDomain: "codezone-ae56b.firebaseapp.com",
+    projectId: "codezone-ae56b",
+    storageBucket: "codezone-ae56b.appspot.com",
+    messagingSenderId: "663060042079",
+    appId: "1:663060042079:web:c6205272d30ab9553be6ea"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 </html>
