@@ -17,40 +17,47 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a class="modal-trigger" href="#modal1" >Login</a></li>
             <li><a class="modal-trigger" href="#modal2">Signup</a></li>
+            <li><a onclick="logout()">Logout</a></li>
           </ul>
         </div>
       </nav>
+
+      <!-- mobile view navbar -->
+      <ul class="sidenav" id="mobile-demo">
+          <li><a class="modal-trigger" href="#modal1">Login</a></li>
+          <li><a class="modal-trigger" href="#modal2">Signup</a></li>
+          <li><a onclick="logout()">Logout</a></li>
+      </ul>
 
     <!-- Modal Structure for login -->
     <div id="modal1" class="modal">
         <div class="modal-content">
         <h4>Log-In</h4>
-        <input placeholder="Email" type="email" class="input-control" />
-        <input placeholder="password" type="password" class="input-control" />
+          <form autocomplete="off" onsubmit="login(event)">
+            <input placeholder="Email" id="lemail" type="email" class="input-control" />
+            <input placeholder="password" id="lpassword" type="password" class="input-control" />
+            <button type="submit" class="waves-effect waves-green btn-flat btn right">Submit</button>
+          </form>
+          <button class="waves-effect waves-green btn-flat btn" onclick="loginGoogle()" >Login with Google</button>
         </div>
-        <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat btn">Submit</a>
-        </div>
+         
     </div>
 
     <!-- Modal Structure for Signup -->
     <div id="modal2" class="modal">
         <div class="modal-content">
         <h4>Sign-Up</h4>
-        <span>To get started...</span>
           <form autocomplete="off" onsubmit="signup(event)">
             <input placeholder="Email" id="email" type="email" class="input-control" />
             <input placeholder="password" id="password" type="password" class="input-control" />
             <input placeholder="confirm password" id="cpassword" type="password" class="input-control" />
-            <a type="submit" class="modal-close waves-effect waves-green btn-flat btn">Submit</a>
+            <button type="submit" class="waves-effect waves-green btn-flat btn right">Submit</button>
           </form>
+          <button class="waves-effect waves-green btn-flat btn" onclick="loginGoogle()" >Login with Google</button>
         </div>
     </div>
 
-    <ul class="sidenav" id="mobile-demo">
-        <li><a class="modal-trigger" href="#modal1">Login</a></li>
-        <li><a class="modal-trigger" href="#modal2">Signup</a></li>
-    </ul>
+  
 
 
 
