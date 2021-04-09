@@ -12,8 +12,22 @@ function signup(e){
         console.log(email.value,pass.value)
 
         firebase.auth().createUserWithEmailAndPassword(email.value, pass.value)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
             var user = userCredential.user;
+
+            // sending verification mail to the user 
+            user.sendEmailVerification().then(function() {
+                console.log("E-mail sent")
+              }).catch(function(error) {
+                console.log("email not sent ")
+              });
+
+            await user.updateProfile({
+            displayName: email.value,
+            })
+
+            firestoreUserdata(user)
+
             M.toast({html:`Welcome ${user.email} `,classes:"rounded green lighten-1"})
             console.log(user)
             M.Modal.getInstance(mymodal2).close()
@@ -44,14 +58,7 @@ function login(e){
         console.log(user)
         M.Modal.getInstance(mymodals).close()
 
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-              console.log(user)
-            } else {
-                console.log("Signed out")
-                // M.toast({html: "Logged out sucessfully",classes:"#ef5350 green lighten-1 rounded"})
-            }
-          });
+       
     })
     .catch((error) => {
         var errorMessage = error.message;
@@ -72,6 +79,18 @@ function logout(){
     })
 
 }
+
+firebase.auth().onAuthStateChanged((user) => {
+    
+    if (user) {
+        fetchuserdetails(user.uid)
+      console.log(user)
+    } else {
+        fetchuserdetails(null)
+        console.log("Signed out")
+        // M.toast({html: "Logged out sucessfully",classes:"#ef5350 green lighten-1 rounded"})
+    }
+  });
 
 function loginGoogle(){
     var provider = new firebase.auth.GoogleAuthProvider();
