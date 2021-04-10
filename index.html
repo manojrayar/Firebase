@@ -53,13 +53,29 @@
     <div id="modal2" class="modal">
         <div class="modal-content">
         <h4>Sign-Up</h4>
-          <form autocomplete="off" onsubmit="signup(event)">
+          <form id="editprofile" autocomplete="off" onsubmit="signup(event)">
             <input placeholder="Email" id="email" type="email" class="input-control" />
             <input placeholder="password" id="password" type="password" class="input-control" />
             <input placeholder="confirm password" id="cpassword" type="password" class="input-control" />
             <button type="submit" class="waves-effect waves-green btn-flat btn right">Submit</button>
           </form>
           <button class="waves-effect waves-green btn-flat btn" onclick="loginGoogle()" >Login with Google</button>
+        </div>
+    </div>
+
+   
+    <!-- Modal Structure for Edit-Profile -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+        <h4>Edit-Profile</h4>
+          <form autocomplete="off" id="editprofileform" onsubmit="editProfile(event)">
+            <input  name="email"  class="input-control" readonly />
+            <input placeholder="Firstname" name="firstname" type="text" class="input-control" />
+            <input placeholder="Lastname" name="lastname" type="text" class="input-control" />
+            <input placeholder="Contact-No." name="number" type="number" class="input-control" />
+            <input placeholder="Interest/Speciality" name="interest" type="text" class="input-control" />
+            <button type="submit" class="waves-effect waves-green btn-flat btn right">Save-Changes</button>
+          </form>
         </div>
     </div>
 
